@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import {Title } from './Movieslist';
 import styled from 'styled-components';
 import Flickity from 'react-flickity-component';
 import Overdrive from 'react-overdrive';
@@ -10,8 +9,10 @@ import Slider from 'react-styled-carousel';
 
 
 const POSTER_PATH = 'https://image.tmdb.org/t/p/w154';
+const BACKDROP_PATH = 'https://image.tmdb.org/t/p/w1280';
 
-export default class Movie extends Component {
+
+export default class Backdrop extends Component {
     static propTypes = {
         movie: propTypes.shape({
             title: propTypes.string.isRequired,
@@ -25,20 +26,13 @@ export default class Movie extends Component {
     }
     render() {
         return (
-            <div>
-            
             <Link to={`${this.props.movie.id}`}>
                 <Overdrive id={`${this.props.movie.id}`}>
                 
-                        <Poster src={`${POSTER_PATH}${this.props.movie.poster_path}`} />
-                      
+                        <Poster src={`${BACKDROP_PATH}${this.props.movie.backdrop_path}`} />
                 
                 </Overdrive>
-            
             </Link>
-            <Title>{this.props.movie.title}</Title>
-
-            </div>
         );
     }
 }
@@ -46,8 +40,6 @@ export default class Movie extends Component {
 const Button = styled.button`
 
 `;
-
-
 
 export const Poster = styled.img`
 box-shadow:0 0 35px black;
