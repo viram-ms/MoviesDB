@@ -9,7 +9,7 @@ import Slider from 'react-styled-carousel';
 
 
 const POSTER_PATH = 'https://image.tmdb.org/t/p/w154';
-const BACKDROP_PATH = 'https://image.tmdb.org/t/p/w1280';
+const BACKDROP_PATH = 'https://image.tmdb.org/t/p/w500';
 
 
 export default class Backdrop extends Component {
@@ -26,21 +26,42 @@ export default class Backdrop extends Component {
     }
     render() {
         return (
-            <Link to={`${this.props.movie.id}`}>
-                <Overdrive id={`${this.props.movie.id}`}>
+            // <Link to={`${this.props.movie.id}`}>
+            //     <Overdrive id={`${this.props.movie.id}`}>
+                <Wrapper>
+                    <Title>{this.props.movie.title}</Title>
+                     <Poster src={`${BACKDROP_PATH}${this.props.movie.backdrop_path}`} />
+                     <Icon><i class="far fa-play-circle"></i></Icon>
+                </Wrapper>
                 
-                        <Poster src={`${BACKDROP_PATH}${this.props.movie.backdrop_path}`} />
+                       
                 
-                </Overdrive>
-            </Link>
+            //     </Overdrive>
+            // </Link>
         );
     }
 }
 
-const Button = styled.button`
+const Wrapper = styled.div`
 
+`;
+const Icon=styled.span` 
+position:relative;
+color:white;
+color:white;
+top:-80px;
+right:-430px;
+font-size:50px;
+`;
+
+const Title = styled.h3`
+position:relative;
+color:white;
+top:50px;
+margin-left:15px;
 `;
 
 export const Poster = styled.img`
 box-shadow:0 0 35px black;
+margin:0px;
 `;
